@@ -2,11 +2,25 @@ import axios from 'axios';
 
 // Настройка базового URL вашего бэкенда
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api', // Замените на ваш URL бэкенда
+  baseURL: 'https://localhost:44392/api', // Замените на ваш URL бэкенда
   headers: {
     'Content-Type': 'application/json'
   }
 });
+
+// Обработка ошибок
+api.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response && error.response.data.errors) {
+      const validationErrors = Object.entries(error.response.data.errors)
+        .map(([field, messages]) => `${field}: ${messages.join(', ')}`)
+        .join('; ');
+      return Promise.reject(new Error(validationErrors));
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Сервис для работы с компаниями
 export const CompanyService = {

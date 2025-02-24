@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://localhost:8080', // URL вашего бэкенда
+      target: 'https://localhost:44392', // URL вашего бэкенда
       changeOrigin: true,
       secure: false
     })

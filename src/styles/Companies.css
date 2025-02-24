@@ -27,7 +27,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 82vh;
 }
 
 /* Контент */
@@ -74,6 +74,19 @@ body {
     background: white;
     border-radius: 10px;
     margin-left: 20px;
+}
+
+.company-details textarea,
+.description-block {
+  width: 100%;
+  flex: 1; /* Занимает все доступное пространство */
+  min-height: 300px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none; /* Запрещаем ручное изменение размера */
+  overflow-y: auto; /* Автоматическая прокрутка */
+  white-space: pre-wrap; /* Сохраняем переносы строк */
 }
 
 .company-details input, .company-details textarea {

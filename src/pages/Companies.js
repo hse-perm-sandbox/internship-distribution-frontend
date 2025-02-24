@@ -42,17 +42,19 @@ function Companies() {
   // Обработчик сохранения изменений
   const handleSave = async () => {
     try {
-      if (editMode) {
+      if (selectedCompany) { // Режим редактирования
         await CompanyService.update(selectedCompany.id, formData);
         const updatedCompanies = companies.map(c => 
           c.id === selectedCompany.id ? { ...c, ...formData } : c
         );
         setCompanies(updatedCompanies);
-      } else {
+        setEditMode(false);
+      } else { // Режим создания новой компании
         const newCompany = await CompanyService.create(formData);
         setCompanies([...companies, newCompany]);
+        setEditMode(false);
+        setSelectedCompany(newCompany); // Устанавливаем новую компанию как выбранную
       }
-      setEditMode(false);
     } catch (err) {
       setError(err);
     }
@@ -104,7 +106,7 @@ function Companies() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  readOnly={!editMode}
+                  readOnly={!editMode && !!selectedCompany}
                 />
               </h3>
               <textarea
@@ -112,16 +114,29 @@ function Companies() {
                 onChange={(e) => setFormData({...formData, description: e.target.value})}
                 readOnly={!editMode}
               />
-              <div className="buttons">
-                <button className="button-save" onClick={handleSave}>
-                  {editMode ? "Сохранить" : "Изменить"}
-                </button>
-                {selectedCompany && (
-                  <button className="button-delete" onClick={handleDelete}>
-                    Удалить
-                  </button>
-                )}
-              </div>
+                <div className="buttons">
+                  {editMode ? (
+                    // Режим редактирования - показываем кнопку "Сохранить"
+                    <button className="button-save" onClick={handleSave}>
+                      Сохранить
+                    </button>
+                  ) : (
+                    // Режим просмотра - показываем кнопку "Изменить"
+                    selectedCompany && (
+                      <button 
+                        className="button-save" 
+                        onClick={() => setEditMode(true)} // Активируем режим редактирования
+                      >
+                        Изменить
+                      </button>
+                    )
+                  )}
+                  {selectedCompany && (
+                    <button className="button-delete" onClick={handleDelete}>
+                      Удалить
+                    </button>
+                  )}
+                </div>
             </div>
           ) : (
             <p>Выберите компанию для просмотра информации.</p>

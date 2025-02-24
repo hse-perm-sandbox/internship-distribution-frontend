@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+  }
+  
+  .header {
+    background: #edf1fa;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .logo {
+    max-width: 100px;
+  }
+  
+  .footer {
+    background: #edf1fa;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sidebar {
+    width: 30%;
+    background: #edf1fa;
+    padding: 20px;
+  }
+  
+  .content {
+    width: 65%;
+    padding: 20px;
+  }
+  
+  .company-button,
+  .add-button,
+  .edit-button,
+  .delete-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .company-button {
+    background: #f1f3fb;
+    border: 1px solid black;
+  }
+  
+  .company-button:hover {
+    background: #d1e1fb;
+  }
+  
+  .add-button {
+    background: #879fdc;
+    color: white;
+  }
+  
+  .add-button:hover {
+    background: #6a83c5;
+  }
+  

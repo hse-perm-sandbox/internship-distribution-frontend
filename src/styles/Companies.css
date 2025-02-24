@@ -1,0 +1,129 @@
+/* Общие стили */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* Хедер */
+.header {
+    background: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+}
+
+.logo {
+    width: 120px;
+}
+
+/* Контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Контент */
+.content {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+
+/* Боковая панель */
+.sidebar {
+    width: 30%;
+    background: #edf1fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sidebar h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.company-btn, .button-add {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    background: #879fdc;
+    color: white;
+}
+
+.company-btn:hover, .button-add:hover {
+    background: #6a83c5;
+}
+
+/* Информация о компании */
+.company-details {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.company-details input, .company-details textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-save, .button-delete {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.button-save {
+    background: #4caf50;
+    color: white;
+}
+
+.button-save:hover {
+    background: #45a049;
+}
+
+.button-delete {
+    background: #f44336;
+    color: white;
+}
+
+.button-delete:hover {
+    background: #d32f2f;
+}
+.company-btn.active {
+    background-color: #0f2d80; /* Зеленый фон */
+    color: white;
+    font-weight: bold;
+  }
+  
+
+/* Футер */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background: white;
+    border-top: 2px solid #ddd;
+}

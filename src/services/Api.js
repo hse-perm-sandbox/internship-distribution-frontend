@@ -1,49 +1,34 @@
-import axios from 'axios';
+import axios from "axios";
+import AuthService from "./authService";
 
-// Настройка базового URL вашего бэкенда
 const api = axios.create({
-  baseURL: 'https://localhost:44392/api', // Замените на ваш URL бэкенда
+  baseURL: "https://localhost:44392/api", // Укажи правильный URL
   headers: {
-    'Content-Type': 'application/json'
-  }
+    "Content-Type": "application/json",
+  },
 });
 
-// Обработка ошибок
+// Добавляем токен в заголовки перед каждым запросом
+api.interceptors.request.use((config) => {
+  const token = AuthService.getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// Обрабатываем ошибки в ответах
 api.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => response,
+  (error) => {
     if (error.response && error.response.data.errors) {
       const validationErrors = Object.entries(error.response.data.errors)
-        .map(([field, messages]) => `${field}: ${messages.join(', ')}`)
-        .join('; ');
+        .map(([field, messages]) => `${field}: ${messages.join(", ")}`)
+        .join("; ");
       return Promise.reject(new Error(validationErrors));
     }
     return Promise.reject(error);
   }
 );
 
-// Сервис для работы с компаниями
-export const CompanyService = {
-  async getAll() {
-    const response = await api.get('/companies');
-    return response.data;
-  },
-
-  async getById(id) {
-    const response = await api.get(`/companies/${id}`);
-    return response.data;
-  },
-
-  async create(companyDto) {
-    const response = await api.post('/companies', companyDto);
-    return response.data;
-  },
-
-  async update(id, companyDto) {
-    await api.put(`/companies/${id}`, companyDto);
-  },
-
-  async delete(id) {
-    await api.delete(`/companies/${id}`);
-  }
-};
+export default api;

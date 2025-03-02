@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CompanyService } from "../services/Api";
+import CompanyService from "../services/companyService";
 import "../styles/Companies.css";
 import { ErrorAlert } from '../components/ErrorAlert';
 

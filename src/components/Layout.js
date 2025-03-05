@@ -1,12 +1,13 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import "../styles/Layout.css"; // Подключаем стили
 
 const Layout = ({ children }) => {
   return (
-    <div className="layout">
+    <div className="app-container">
       <Header />
-      <main>{children}</main>
+      <div className="main-content">{children}</div>
       <Footer />
     </div>
   );

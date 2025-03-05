@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Минимальная высота экрана */
+}
+
+.main-content {
+    flex: 1; /* Растягивает контент на всю доступную высоту */
+}
+
+.footer {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+}

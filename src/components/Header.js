@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className="header">
       <div className="header__logo">
-        <Link to="/">
+        <Link to="/menu">
           <img className="logo" src={logo} alt="HSE Logo" />
         </Link>
       </div>

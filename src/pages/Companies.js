@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CompanyService from "../services/companyService";
 import "../styles/Companies.css";
 import { ErrorAlert } from '../components/ErrorAlert';
+import { getUserRole } from "../services/authUtils";
 
 
 function Companies() {
@@ -10,6 +11,7 @@ function Companies() {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({ name: "", description: "" });
   const [error, setError] = useState(null); // Добавлено состояние ошибки
+  const role = getUserRole();
 
   // Загрузка компаний
   useEffect(() => {
@@ -73,7 +75,7 @@ function Companies() {
 
   return (
     <div className="container">
-          {error && <ErrorAlert error={error} />}
+      {error && <ErrorAlert error={error} />}
       <section className="content">
         <aside className="sidebar">
           <h3>Список доступных компаний</h3>
@@ -86,16 +88,20 @@ function Companies() {
               {company.name}
             </button>
           ))}
-          <button 
-            className="button-add"
-            onClick={() => {
-              setSelectedCompany(null);
-              setFormData({ name: "", description: "" });
-              setEditMode(true);
-            }}
-          >
-            Добавить компанию
-          </button>
+          
+          {/* Показываем кнопку добавления только для менеджера */}
+          {role === "Manager" && (
+            <button 
+              className="button-add"
+              onClick={() => {
+                setSelectedCompany(null);
+                setFormData({ name: "", description: "" });
+                setEditMode(true);
+              }}
+            >
+              Добавить компанию
+            </button>
+          )}
         </aside>
 
         <main className="company-details">
@@ -106,37 +112,37 @@ function Companies() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  readOnly={!editMode && !!selectedCompany}
+                  readOnly={!editMode || role !== "Manager"} // Блокируем ввод для не-менеджеров
                 />
               </h3>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({...formData, description: e.target.value})}
-                readOnly={!editMode}
+                readOnly={!editMode || role !== "Manager"} // Блокируем ввод для не-менеджеров
               />
-                <div className="buttons">
-                  {editMode ? (
-                    // Режим редактирования - показываем кнопку "Сохранить"
+              <div className="buttons">
+                {editMode ? (
+                  role === "Manager" && ( // Показываем кнопку сохранения только для менеджера
                     <button className="button-save" onClick={handleSave}>
                       Сохранить
                     </button>
-                  ) : (
-                    // Режим просмотра - показываем кнопку "Изменить"
-                    selectedCompany && (
-                      <button 
-                        className="button-save" 
-                        onClick={() => setEditMode(true)} // Активируем режим редактирования
-                      >
-                        Изменить
-                      </button>
-                    )
-                  )}
-                  {selectedCompany && (
-                    <button className="button-delete" onClick={handleDelete}>
-                      Удалить
+                  )
+                ) : (
+                  selectedCompany && role === "Manager" && ( // Показываем кнопку изменения только для менеджера
+                    <button 
+                      className="button-save" 
+                      onClick={() => setEditMode(true)}
+                    >
+                      Изменить
                     </button>
-                  )}
-                </div>
+                  )
+                )}
+                {selectedCompany && role === "Manager" && ( // Показываем кнопку удаления только для менеджера
+                  <button className="button-delete" onClick={handleDelete}>
+                    Удалить
+                  </button>
+                )}
+              </div>
             </div>
           ) : (
             <p>Выберите компанию для просмотра информации.</p>

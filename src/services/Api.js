@@ -8,6 +8,21 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  const token = AuthService.getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+    
+    // Для multipart запросов
+    if (config.data instanceof FormData) {
+      config.headers["Content-Type"] = "multipart/form-data";
+    } else {
+      config.headers["Content-Type"] = "application/json";
+    }
+  }
+  return config;
+});
+
 // Добавляем токен в заголовки перед каждым запросом
 api.interceptors.request.use((config) => {
   const token = AuthService.getToken();

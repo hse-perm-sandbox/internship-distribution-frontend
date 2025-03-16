@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Лого + юзер-инфо слева, кнопка справа */
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Левая часть: логотип + инфо о пользователе в одной линии */
+.user_info {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Расстояние между логотипом и блоком юзера */
+  margin-left: auto;
+  margin-right: 30px;
+  align-self: center; /* Прижать блок к низу header */
+}
+
+/* Блок с иконкой и данными пользователя */
+.header__user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Иконка пользователя */
+.user-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Текстовая часть (роль и email) располагаем вертикально */
+.user-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Роль — чуть более выделенный текст */
+.user-role {
+  font-weight: bold;
+}
+
+/* Email — чуть меньший и сероватый */
+.user-email {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Кнопка выхода */
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Иконка по центру кнопки */
+  background: #005AAB;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+  padding: 0.5rem 1rem;
+  align-self: center; /* Прижать кнопку к низу header */
+}
+
+/* Иконка выхода в кнопке */
+.logout-button .icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Ховер-состояние */
+.logout-button:hover {
+  background: #6a87c4;
+}
+
+.logo {
+  width: 60px !important;
+  height: 60px !important;
+  object-fit: contain;
+}
+

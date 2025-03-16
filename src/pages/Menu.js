@@ -18,7 +18,7 @@ export default function Menu() {
         
         {role === "Student" ? (
           <>
-            <Link className="button" to="/profile">Информация о себе</Link>
+            <Link className="button" to="/profile">Загрузить резюме</Link>
             <Link className="button" to="/priorities">Расставить приоритеты</Link>
             <Link className="button" to="/results">Результаты распределения</Link>
           </>

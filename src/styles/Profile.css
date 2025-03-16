@@ -1,0 +1,94 @@
+/* ResumePage.css */
+.resume-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background: #f0f2f5;
+    padding: 20px;
+  }
+  
+  .resume-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  h2 {
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .file-section {
+    margin-bottom: 3rem;
+  }
+  
+  .file-upload {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #4CAF50;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .file-upload:hover {
+    background: #45a049;
+  }
+  
+  .file-upload input {
+    display: none;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: opacity 0.3s;
+  }
+
+  .btn:hover
+  {
+    transform: translateY(-2px);
+  }
+  
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .upload-btn {
+    background: #2196F3;
+    color: white;
+  }
+  
+  .download-btn {
+    background: #9C27B0;
+    color: white;
+  }
+  
+  .delete-btn {
+    background: #f44336;
+    color: white;
+  }
+  
+  .error-message {
+    color: #f44336;
+    margin-bottom: 1rem;
+    text-align: center;
+  }

@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import '../styles/ErrorAlert.css';
 
 export const ErrorAlert = ({ error }) => {
-  const [isVisible, setIsVisible] = useState(!!error);
+  // Мемоизируем преобразование ошибки
+  const errorObj = useMemo(() => 
+    typeof error === 'string' ? { message: error } : error,
+  [error]); // Добавляем зависимость
+
+  const [isVisible, setIsVisible] = useState(!!errorObj);
 
   useEffect(() => {
-    setIsVisible(!!error);
-    if (error) {
+    setIsVisible(!!errorObj);
+    if (errorObj) {
       const timer = setTimeout(() => setIsVisible(false), 5000);
       return () => clearTimeout(timer);
     }
-  }, [error]);
+  }, [errorObj]); // Теперь зависимость стабильна
 
-  if (!isVisible) return null;
+  if (!isVisible || !errorObj) return null;
 
   return (
     <div className="error-alert">
-      <span>Ошибка: {error.message}</span>
+      <span>Ошибка: {errorObj.message}</span>
     </div>
   );
 };

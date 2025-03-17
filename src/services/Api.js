@@ -36,13 +36,26 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.data.errors) {
-      const validationErrors = Object.entries(error.response.data.errors)
-        .map(([field, messages]) => `${field}: ${messages.join(", ")}`)
-        .join("; ");
-      return Promise.reject(new Error(validationErrors));
+    let errorMessage = 'Произошла неизвестная ошибка';
+    
+    if (error.response) {
+      // Обработка валидационных ошибок ASP.NET
+      if (error.response.data.errors) {
+        errorMessage = Object.values(error.response.data.errors)
+          .flat()
+          .join(', ');
+      }
+      // Обработка кастомных ошибок из body
+      else if (error.response.data.error) {
+        errorMessage = error.response.data.error;
+      }
+      // Стандартные HTTP ошибки
+      else {
+        errorMessage = error.response.statusText;
+      }
     }
-    return Promise.reject(error);
+    
+    return Promise.reject(new Error(errorMessage));
   }
 );
 

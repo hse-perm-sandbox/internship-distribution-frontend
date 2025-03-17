@@ -17,7 +17,6 @@ function Header() {
 
   return (
     <header className="header">
-      {/* Левая часть: Логотип + блок с данными пользователя */}
       <div className="hse_logo">
         <Link to="/menu">
           <img className="logo" src={logo} alt="HSE Logo" />
@@ -36,7 +35,6 @@ function Header() {
         )}
       </div>
 
-      {/* Справа: кнопка выхода */}
       <button onClick={handleLogout} className="logout-button">
         <img src={exitIcon} alt="Exit icon" className="icon" />
       </button>

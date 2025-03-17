@@ -1,0 +1,66 @@
+.drop-zone {
+  border: 2px dashed #005AAB;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border 0.3s, background 0.3s;
+  color: #333;
+  background-color: #fff; /* базовый фон зоны */
+}
+
+.drop-zone.active {
+  background-color: #f0f8ff;
+  border-color: #111112;
+}
+
+.upload-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  padding: 0.3rem;
+  background-color: inherit; /* фон иконки наследуется от drop-zone */
+}
+
+.selected-file {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pdf-logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.drop-zone p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+button.btn {
+  background-color: #005AAB;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button.btn:hover {
+  background-color: #004080;
+  transform: translateY(-2px);
+}

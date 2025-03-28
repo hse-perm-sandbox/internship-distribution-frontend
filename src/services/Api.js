@@ -36,23 +36,28 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    let errorMessage = 'Произошла неизвестная ошибка';
+    // Убираем дефолтное сообщение
+    let errorMessage;
     
     if (error.response) {
       // Обработка валидационных ошибок ASP.NET
-      if (error.response.data.errors) {
+      if (error.response.data?.errors) {
         errorMessage = Object.values(error.response.data.errors)
           .flat()
           .join(', ');
       }
       // Обработка кастомных ошибок из body
-      else if (error.response.data.error) {
-        errorMessage = error.response.data.error;
+      else if (error.response.data?.title || error.response.data?.message) {
+        errorMessage = error.response.data.title || error.response.data.message;
       }
       // Стандартные HTTP ошибки
       else {
-        errorMessage = error.response.statusText;
+        errorMessage = error.response.statusText || `HTTP Error ${error.response.status}`;
       }
+    } else if (error.request) {
+      errorMessage = "Нет ответа от сервера";
+    } else {
+      errorMessage = error.message;
     }
     
     return Promise.reject(new Error(errorMessage));

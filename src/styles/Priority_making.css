@@ -1,0 +1,120 @@
+/* Сброс базовых отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Контейнер */
+  .priority-container {
+    max-width: 700px;
+    margin: 50px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Заголовок */
+  .priority-container h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  /* Строка приоритета */
+  .company-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E2E8F8;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Подпись приоритета (слева) */
+  .company-priority-label {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: #333;
+  }
+  
+  /* Селект для выбора компании */
+  .company-select {
+    flex: 2;
+    margin: 0 10px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Кнопка статуса */
+  .status-button {
+    flex: 1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #fff;
+    cursor: default; /* Не кликается */
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  /* Цвета для разных статусов */
+  .button--default {
+    background-color: #999;
+  }
+  
+  .button--blue {
+    background-color: #0B74DE;
+  }
+  
+  .button--red {
+    background-color: #f24c56;
+  }
+  
+  .button--green {
+    background-color: #6ccf82;
+  }
+  
+  .button--gray {
+    background-color: #73b9d2;
+  }
+  
+  /* Контейнер для кнопки "Сохранить" */
+  .save-container {
+    margin-top: 30px;
+  }
+  
+  /* Кнопка "Сохранить" */
+  .save-button {
+    background-color: #0B74DE;
+    color: #fff;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    transform: translateY(-2px);
+    background-color: #005AAB;
+  }
+  
+  /* Стили для загрузки и ошибок */
+  .loading, .error {
+    font-size: 18px;
+    margin: 50px;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+
+  
+  

@@ -1,0 +1,34 @@
+.notfound-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Высота, чтобы страница занимала весь экран */
+    background-color: #fff; /* Цвет фона */
+  }
+  
+  .notfound-content {
+    text-align: center; /* Центрируем всё содержимое */
+  }
+  
+  .notfound-404 {
+    max-width: 600px; /* Ширина изображения «404» */
+    margin-bottom: 20px;
+  }
+  
+  .notfound-button {
+    display: block; /* меняем на block */
+    background-color: #b2c6ff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px auto 0; /* 20px сверху, auto по бокам, 0 снизу */
+  }
+  
+  .notfound-button:hover {
+    background-color: #005AAB;
+    transform: translateY(-2px);
+  }
+  

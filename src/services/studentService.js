@@ -12,6 +12,42 @@ const StudentService = {
     }
   },
 
+  async getStudentById(studentId) {
+    try {
+      const response = await api.get(`${STUDENT_URL}/${studentId}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async getAllStudents() {
+    try {
+      const response = await api.get(`${STUDENT_URL}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async createStudent(dto) {
+    try {
+      const response = await api.post(`${STUDENT_URL}`, dto);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async bulkCreateStudents(students) {
+    try {
+      const response = await api.post(`${STUDENT_URL}/bulk-create`, { students });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
   async uploadResume(studentId, file) {
     const formData = new FormData();
     formData.append("file", file);
@@ -52,7 +88,15 @@ const StudentService = {
     } catch (error) {
       throw error;
     }
-  }
+  },
+  async getAllStudentsWithApplications() {
+    try {
+      const response = await api.get(`${STUDENT_URL}/with-applications`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }  
 };
 
 export default StudentService;
